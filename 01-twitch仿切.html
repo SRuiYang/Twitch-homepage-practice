@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 微軟正黑體;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            border-bottom: 1px solid gray;
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-image: url(./img/twitch.jpg);
+            background-size: 100%;
+            background-position: center;
+        }
+
+        .menu {
+            margin: 0;
+            padding: 0 20px;
+            list-style-type: none;
+        }
+
+        .menu-btn {
+            padding: 0 20px;
+
+        }
+
+        .menu-btn>a {
+            font-size: 20px;
+            font-family: sans-serif;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .more {
+            width: 25px;
+            height: 24px;
+            background-color: #fff;
+            background-image: url(./img/hamburger.png);
+            background-size: 70%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .search-bar {
+            display: flex;
+        }
+
+        .search-bar>input {
+            width: 390px;
+            background-color: rgb(229, 229, 229);
+            border-radius: 5px 0 0 5px;
+            border: 0px;
+            padding-left: 15px;
+        }
+
+        .search-bar>.search-btn {
+            width: 35px;
+            height: 36px;
+            background-image: url(./img/放大鏡.png);
+            background-size: 81%;
+            background-color: rgb(229, 229, 229);
+            background-position: center;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .member {
+            display: flex;
+            align-items: center;
+        }
+
+        .prime-btn {
+            margin-right: 5px;
+            padding: 0 5px;
+            width: 20px;
+            height: 20px;
+            background-image: url(./img/皇冠.jpg);
+            background-size: 100%;
+            background-position: center;
+        }
+
+        .sign-in-sign-up {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .sign-in {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            padding: 0 5px;
+            width: 46px;
+            height: 30px;
+            background-color: rgb(229, 229, 229);
+            border-radius: 5px;
+        }
+
+        .sign-up {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            padding: 0 5px;
+            width: 46px;
+            height: 30px;
+            background-color: blueviolet;
+            border-radius: 5px;
+
+        }
+
+        .href {
+            text-decoration: none;
+            color: #000;
+
+        }
+
+        .core-btn {
+            margin: 0 5px;
+            padding: 0 5px;
+            width: 20px;
+            height: 20px;
+            background-image: url(./img/個人.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .aside-bar {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            padding: 10px;
+            width: 50px;
+            height: calc(100vh - 50px);
+            background-color: rgb(229, 229, 229);
+        }
+
+        .channel {
+            margin-bottom: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: purple;
+        }
+
+        main {
+            margin: 50px 0 0 20px;
+            padding: 0 30px;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            padding: 40px 0 0 30px;
+        }
+
+        .e-sport>h1 {
+            font-size: 54px;
+            font-family: sans-serif;
+            margin: 0 0 10px;
+        }
+
+        .e-sport-descript {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(104, 103, 103);
+            margin: 0 0 55px;
+        }
+
+        .e-sport>.row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .e-sport>.row>.col {
+            min-width: 293px;
+        }
+
+        .game-card {
+            width: 293px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            gap: 8px;
+            background-color: rgb(230, 230, 230);
+            border-radius: 5px;
+        }
+
+        .game-img {
+            width: 40px;
+            height: 50px;
+            background-color: pink;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+
+        .game-info {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 225px;
+            height: 50px;
+            font-size: 10px;
+        }
+
+        .game-name {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .sub-info {
+            font-weight: bold;
+            color: grey;
+            margin: 0;
+        }
+
+        .live-block {
+            height: 50px;
+
+        }
+
+        .live {
+            padding: 2px 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 20px;
+            color: #fff;
+            background-color: red;
+            border-radius: 5px;
+            font-weight: 550;
+            font-size: 10px;
+
+        }
+
+        h2 {
+            width: 100%;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        .title {
+            width: 100%;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: rgb(95, 94, 94);
+            margin: 0 0 20px;
+        }
+
+        .stream-block {
+            display: flex;
+        }
+
+        .highlight {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 33.33%;
+            background-color: white;
+            margin-right: 20px;
+        }
+
+
+
+        .highlight>.stream-card {
+            position: relative;
+            width: 100%;
+            height: 330px;
+            background-color: rgb(255, 240, 214);
+            margin-bottom: 10px;
+        }
+
+        .stream-card>.thumbnail>.live {
+            position: absolute;
+            left: 10px;
+            top: 15px;
+        }
+
+        .condition {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 15px;
+            height: 20px;
+            padding: 0 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .highlight>.gamer-name,
+        .video-card>.gamer-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 25px;
+            margin-bottom: 10px;
+        }
+
+        .pic {
+            width: 20px;
+            height: 20px;
+            border-radius: 15px;
+            margin-right: 5px;
+            background-image: url(./img/twitch-2021.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .text {
+            color: rgb(182, 65, 250);
+            font-weight: bold;
+        }
+
+        .highlight>.game-info {
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .description {
+            width: 100%;
+            font-size: 12px;
+            color: gray;
+        }
+
+        .stream-block>.row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 66.66%;
+            row-gap: 20px;
+        }
+
+        .stream-block>.row>.col {
+            display: flex;
+            flex-direction: column;
+            max-width: 25%;
+            padding: 0 10px;
+        }
+
+        .col>.stream-card {
+            position: relative;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 160px;
+            background-color: rgb(255, 240, 214);
+
+        }
+
+        .col>.game-info {
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        @media screen and (max-width:1200px) {
+            .stream-block>.row>.col{
+                max-width: calc(50% - 20px);
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <div class="logo"></div>
+            <ul class="menu">
+                <li class="menu-btn">
+                    <a href="">
+                        瀏覽
+                    </a>
+                </li>
+            </ul>
+            <div class="more"></div>
+        </nav>
+
+        <div class="search-bar">
+            <input type="text" style="padding: 10px;" placeholder="搜尋" class="search-input">
+            <div class="search-btn"></div>
+        </div>
+
+        <div class="member">
+            <div class="prime-btn"></div>
+            <ul class="sign-in-sign-up">
+                <li class="sign-in">
+                    <a class="href" href="">
+                        登入
+                    </a>
+                </li>
+                <li class="sign-up">
+                    <a class="href" href="">
+                        註冊
+                    </a>
+                </li>
+            </ul>
+            <div class="core-btn"></div>
+        </div>
+    </header>
+
+    <aside>
+        <div class="aside-bar">
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+            <div class="channel"></div>
+        </div>
+    </aside>
+
+    <main>
+        <div class="container">
+            <div class="e-sport">
+                <h1>電競</h1>
+                <p class="e-sport-descript">
+                    即時賽況、賽事精華和您最愛的職業玩家都在這裡
+                </p>
+                <div class="row">
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="game-card">
+                            <div class="game-img"></div>
+                            <div class="game-info">
+                                <p class="game-name">
+                                    League of Legends
+                                </p>
+                                <p class="sub-info">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                            <div class="live-block">
+                                <div class="live">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+            </div>
+            <div class="streaming">
+                <h2>實況中的對戰</h2>
+                <p class="title">
+                    我們認為您會喜歡的最精采 Live 比賽和對戰
+                </p>
+                <div class="stream-block">
+                    <div class="highlight">
+                        <div class="stream-card">
+                            <div class="thumbnail">
+                                <div class="live">LIVE</div>
+                                <p class="condition">
+                                    觀眾人數：7,777
+                                </p>
+                            </div>
+                        </div>
+                        <div class="gamer-name">
+                            <div class="pic"></div>
+                            <div class="text">NMSL</div>
+                        </div>
+                        <div class="game-info">
+                            Twitch Rivals: League of Legends Draft Showdown EMEA Group Stage — Day 2 and Quarterfinals
+                        </div>
+                        <div class="description">
+                            League of Legends • 英文
+                        </div>
+                    </div>
+                    <div class="row stream-group">
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                    <div class="thumbnail">
+                                        <div class="live">LIVE</div>
+                                        <p class="condition">
+                                            觀眾人數：7,777
+                                        </p>
+                                    </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="stream-card">
+                                <div class="thumbnail">
+                                    <div class="live">LIVE</div>
+                                    <p class="condition">
+                                        觀眾人數：7,777
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="gamer-name">
+                                <div class="pic"></div>
+                                <div class="text">NMSL</div>
+                            </div>
+                            <div class="game-info">
+                                TSM Academy vs Dignitas Mirage | 2021 Spring LCS Proving Grounds | Round 2
+                            </div>
+                            <div class="description">
+                                League of Legends • 英文
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+        </div>
+        </div>
+
+
+
+    </main>
+</body>
+
+</html>
